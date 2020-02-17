@@ -75,6 +75,9 @@
                 <a href="/home/store-role">Store Role</a>
             </li>
             <li>
+                <a href="/home/store-country">Store Country</a>
+            </li>
+            <li>
                 <a href="/blog">Store Blog</a>
             </li>
             <li>
@@ -125,6 +128,9 @@
             </li>
             <li>
                 <a href="/user-articles"> One-To-Many UserArticles</a>
+            </li>
+            <li>
+                <a href="/country"> One-To-ManyThrough CountryUserArticles</a>
             </li>
         </ul>
         <div class="flex-center position-ref full-height">

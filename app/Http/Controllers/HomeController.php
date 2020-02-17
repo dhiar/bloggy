@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Role;
 use App\User;
+use App\Country;
 use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
@@ -30,18 +31,28 @@ class HomeController extends Controller
                 'name' => "andi", 
                 'password'=> "abc",
                 'email' => 'abc@y.com',
+                'country_id' => 1,
                 'created_at' => now()
             ],
             [
                 'name' => "ana", 
                 'password'=> "dev",
                 'email' => 'dev@y.com',
+                'country_id' => 2,
                 'created_at' => now()
             ],
             [
                 'name' => "budi", 
                 'password'=> "ghi",
                 'email' => 'ghi@y.com',
+                'country_id' => 3,
+                'created_at' => now()
+            ],
+            [
+                'name' => "amanda", 
+                'password'=> "kll",
+                'email' => 'jkl@y.com',
+                'country_id' => 3,
                 'created_at' => now()
             ]
         ]);
@@ -73,6 +84,27 @@ class HomeController extends Controller
                 'name' => "Office Boy"
             ]
         ]);
+        dd(Role::all()->toArray());
+    }
+
+    public function storeCountry(){
+        Country::insert([
+            [
+                'name' => "Indonesia"
+            ],
+            [
+                'name' => "Malaysia"
+            ],
+            [
+                'name' => "Korea"
+            ],
+            [
+                'name' => "Arab Saudi"
+            ],
+            [
+                'name' => "Mesir"
+            ]
+        ]);
         echo response()->json(['success' => true]);
     }
 
@@ -91,6 +123,9 @@ class HomeController extends Controller
     public function detach()
     {
         $user = User::first();
+        $user->roles()->detach(1);
+
+        $user = User::find(10);
         $user->roles()->detach(1);
 
         echo 'Username = '.$user->name.'<br><br>';

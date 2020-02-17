@@ -30,6 +30,7 @@ Route::get('/home', "HomeController@index");
 Route::get('/home/store-user', "HomeController@storeUser");
 Route::get('/home/store-user-factory', "HomeController@storeUserFactory");
 Route::get('/home/store-role', "HomeController@storeRole");
+Route::get('/home/store-country', "HomeController@storeCountry");
 
 Route::get('/home/pivot', "HomeController@pivot");
 
@@ -63,4 +64,6 @@ Route::get('/analyticreport', "AnalyticReportController@show");
 Route::get('/customers', "CustomersController@index");
 Route::get('/customers/list', "CustomersController@list");
 Route::get('/customers/store', "CustomersController@store");
+
+Route::get('/country', "CountryController@index");
 

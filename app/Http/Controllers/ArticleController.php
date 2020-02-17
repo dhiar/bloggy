@@ -28,33 +28,34 @@ class ArticleController extends Controller
         Article::create([
             'title'=>'Hello World',
             'body'=>'Content Hello WOrld',
-            'user_id'=>'5'
+            'user_id'=>'10'
         ]);
 
         Article::create([
             'title'=>'Artikel Natural',
             'body'=>'Content Artikel Natural',
-            'user_id'=>'5'
+            'user_id'=>'11'
         ]);
 
         Article::create([
             'title'=>'Sea On Bali',
             'body'=>'Content Sea On Bali',
-            'user_id'=>'6'
+            'user_id'=>'12'
         ]);
 
         Article::create([
             'title'=>'Indonesian Food',
             'body'=>'Content Indonesian Food',
-            'user_id'=>'7'
+            'user_id'=>'13'
         ]);
 
         Article::create([
             'title'=>'East From Asia',
             'body'=>'Content East From Asia',
-            'user_id'=>'7'
+            'user_id'=>'14'
         ]);
 
+        dd(Article::all()->toArray());
         echo response()->json(['success' => true]);
     }
 
