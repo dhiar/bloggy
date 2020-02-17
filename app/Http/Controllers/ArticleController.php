@@ -110,4 +110,9 @@ class ArticleController extends Controller
             echo $article->title.'__Name='.$article->user->name.'__<br>';
         }
     }
+
+    public function showByUser($id)
+    {
+        echo 'id = '.$id;
+    }
 }

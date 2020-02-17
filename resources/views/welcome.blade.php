@@ -92,6 +92,9 @@
                     <li>
                         <a href="/article/show">Show Article</a>
                     </li>
+                    <li>
+                        <a href="/article/show-by-user/7">Show By User</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -118,7 +121,10 @@
                 </ul>
             </li>
             <li>
-                <a href="/profil/Steven"> OneToOne - Steven</a>
+                <a href="/user-address"> One-To-One UserAddress</a>
+            </li>
+            <li>
+                <a href="/user-articles"> One-To-Many UserArticles</a>
             </li>
         </ul>
         <div class="flex-center position-ref full-height">

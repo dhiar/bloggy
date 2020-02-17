@@ -130,4 +130,17 @@ class HomeController extends Controller
 
         dd($user->roles);
     }
+
+    public function userAddress(){
+        $user = User::first();
+        echo 'Username = '.$user->name;
+        dd($user->address->country);
+    }
+
+    public function userArticles(){
+        $user = User::first();
+        echo 'Username = '.$user->name;
+        // dd($user->address->country);
+        dd($user->articles->toArray());
+    }
 }

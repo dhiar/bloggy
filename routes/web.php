@@ -36,6 +36,7 @@ Route::get('/home/pivot', "HomeController@pivot");
 Route::get('/article', "ArticleController@index");
 Route::get('/article/store', "ArticleController@store");
 Route::get('/article/show', "ArticleController@show");
+Route::get('/article/show-by-user/{username}', "ArticleController@showByUser");
 Route::get('/article/onetomany', "ArticleController@onetomany");
 
 Route::get('/user/{username}', function ($username) {
@@ -52,6 +53,8 @@ Route::get('/user-attach', "HomeController@attach");
 Route::get('/user-detach', "HomeController@detach");
 Route::get('/user-sync', "HomeController@sync");
 Route::get('/user-sync-wo-detach', "HomeController@sync");
+Route::get('/user-address', "HomeController@userAddress");
+Route::get('/user-articles', "HomeController@userArticles");
 
 Route::get('/analytic', "AnalyticController@index");
 
