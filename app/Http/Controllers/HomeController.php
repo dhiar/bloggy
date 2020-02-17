@@ -23,25 +23,111 @@ class HomeController extends Controller
         echo 'index homeController';
     }
 
+    public function storeUser(){
+        // insert done
+        User::insert([
+            [
+                'name' => "andi", 
+                'password'=> "abc",
+                'email' => 'abc@y.com',
+                'created_at' => now()
+            ],
+            [
+                'name' => "ana", 
+                'password'=> "dev",
+                'email' => 'dev@y.com',
+                'created_at' => now()
+            ],
+            [
+                'name' => "budi", 
+                'password'=> "ghi",
+                'email' => 'ghi@y.com',
+                'created_at' => now()
+            ]
+        ]);
+
+        dd(User::all()->toArray());
+        echo response()->json(['success' => true]);
+    }
+
+    public function storeUserFactory(){
+        factory(\App\User::class)->create();
+        dd(User::all()->toArray());
+    }
+
+    public function storeRole(){
+        Role::insert([
+            [
+                'name' => "Admin"
+            ],
+            [
+                'name' => "Developer"
+            ],
+            [
+                'name' => "Manager"
+            ],
+            [
+                'name' => "Staff"
+            ],
+            [
+                'name' => "Office Boy"
+            ]
+        ]);
+        echo response()->json(['success' => true]);
+    }
+
+    public function attach()
+    {
+        $user = User::first();
+        $user->roles()->attach(1,['name'=>'Test Name']);
+
+        echo 'Username = '.$user->name.'<br><br>';
+        foreach ($user->roles as $role) {
+            echo 'roleName='.$role->name.'__createdAt='.$role->pivot->created_at.'<br>';
+        }
+    }
+
+
+    public function detach()
+    {
+        $user = User::first();
+        $user->roles()->detach(1);
+
+        echo 'Username = '.$user->name.'<br><br>';
+        foreach ($user->roles as $role) {
+            echo 'roleName='.$role->name.'__createdAt='.$role->pivot->created_at.'<br>';
+        }
+    }
+
+    public function sync()
+    {
+        $user = User::first();
+        $user->roles()->sync( [1, ['name'=>'Test Name']]);
+
+        echo 'Username = '.$user->name.'<br><br>';
+        foreach ($user->roles as $role) {
+            echo 'roleName='.$role->name.'__createdAt='.$role->pivot->created_at.'<br>';
+        }
+    }
+
+    public function syncWithOutDetaching()
+    {
+        $user = User::first();
+        $user->roles()->syncWithOutDetaching( [1, ['name'=>'Test Name']]);
+
+        echo 'Username = '.$user->name.'<br><br>';
+        foreach ($user->roles as $role) {
+            echo 'roleName='.$role->name.'__createdAt='.$role->pivot->created_at.'<br>';
+        }
+    }
+
     public function pivot()
     {
-        // attach for insert
-        // detach for delete
-        // sync for insert if not exist
-
-        $user = User::find("1");
-        // $user->roles()->attach([1,2,3],['name'=>'Test Name']);
-
-        // $user->roles()->attach(2);
-        // $user->roles()->detach([1,2,3]);
-        // $user->roles()->sync([1,2,3]);
-
+        $user = User::first();
         foreach ($user->roles as $role) {
-            echo $role->name.'__createdAt='.$role->pivot->name.'<br>';
-            // echo $role->name.'__createdAt='.$role->pivot->created_at.'<br>';
+            echo $role->name.'__createdAt='.$role->pivot->name.'__'.$role->pivot->created_at.'<br>';
         }
 
         dd($user->roles);
-
     }
 }

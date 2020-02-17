@@ -15,30 +15,6 @@ class ArticleController extends Controller
     public function index()
     {
         echo 'index';
-        
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        // Article::create([
-        //     'title'=>'Hello WOrld',
-        //     'body'=>'Content Hello WOrld',
-        //     'user_id'=>'1'
-        // ]);
-
-        // Article::create([
-        //     'title'=>'Artikel ku',
-        //     'body'=>'Artikel ku',
-        //     'user_id'=>'2'
-        // ]);
-        echo 'create';
-        //
     }
 
     /**
@@ -49,7 +25,37 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Article::create([
+            'title'=>'Hello World',
+            'body'=>'Content Hello WOrld',
+            'user_id'=>'5'
+        ]);
+
+        Article::create([
+            'title'=>'Artikel Natural',
+            'body'=>'Content Artikel Natural',
+            'user_id'=>'5'
+        ]);
+
+        Article::create([
+            'title'=>'Sea On Bali',
+            'body'=>'Content Sea On Bali',
+            'user_id'=>'6'
+        ]);
+
+        Article::create([
+            'title'=>'Indonesian Food',
+            'body'=>'Content Indonesian Food',
+            'user_id'=>'7'
+        ]);
+
+        Article::create([
+            'title'=>'East From Asia',
+            'body'=>'Content East From Asia',
+            'user_id'=>'7'
+        ]);
+
+        echo response()->json(['success' => true]);
     }
 
     /**
@@ -60,7 +66,6 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        echo 'show';
         dd(Article::all()->toArray());
     }
 

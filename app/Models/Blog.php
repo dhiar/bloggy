@@ -8,7 +8,7 @@ class Blog extends Model
 {
     // bila nama table di db tidak menggunakan postfix `s` , maka di-set dengan ini :
     // protected $table = 'nama_db';
-    protected $table = 'blog';    
+    protected $table = 'blogs';    
 
     // dhiar
     public $timestamps = false; // setting bila cdate & udate tidak ada

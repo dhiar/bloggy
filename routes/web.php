@@ -19,80 +19,42 @@ use App\User;
 // dhiar-tutorial eager-loading : Laravel 5.8 Tutorial From Scratch - e47 - Eloquent Relationships Many To Many (BelongsToMany)
 Route::get('/', function () 
 {
-    $user = \App\User::first();
-    
-    // fungsi attach
-    // fungsi : menambahkan data pada tbl role, sejumlah 2 data pada tbl role_user
-    /*
-    $roles = \App\Role::all();
-    $user->roles()->attach($roles); // gunanya untuk apa?
-    */    
-
-    // fungsi detach
-    // fungsi : delete data. pada case ini, delete data pada row pertama tbl role_user
-    /*
-    $roles = \App\Role::first();
-    $user->roles()->detach($roles);
-    */
-    
-    // tambahkan 1 data
-    /*
-    $roles = \App\Role::first();
-    $user->roles()->attach($roles); 
-    */    
-
-    // $user->roles()->attach([1, 3, 5]); 
-    // result : di tbl : role_user, field `role_user` ada tambahan : 1,3,5
-
-    // delete or insert on tbl role_user. dis-appear some id (yang tidak di-dalam param array) in result
-    // $user->roles()->sync([1, 3, 5]); // otomatis delete data
-
-    // $user->roles()->sync([2, 4]); // otomatis nambah data
-
-    // $user->roles()->syncWithOutDetaching([3]); // hanya nambah 1 data tanpa ada delete data
-
-    //$role = \App\Role::find(4);
-    // $role->users()->sync([5])
-    
-    // dd($roles);
-    /*
-        factory(\App\User::class)->create(); 
-        // create 1 data fake
-
-       
-    */    
     return view('welcome');
 });
 
-// dhiar 1a.
-//Route::get('/koding', function (){
-//    return view("blog/home");
-//});
-
-// dhiar 1c. Mengakses controller@function
 Route::get('/blog', "BlogController@index");
 
-// dhiar 1e.
 Route::get('/blog/{id}', "BlogController@show");
 
 Route::get('/home', "HomeController@index");
+Route::get('/home/store-user', "HomeController@storeUser");
+Route::get('/home/store-user-factory', "HomeController@storeUserFactory");
+Route::get('/home/store-role', "HomeController@storeRole");
+
 Route::get('/home/pivot', "HomeController@pivot");
 
 Route::get('/article', "ArticleController@index");
-Route::get('/article/create', "ArticleController@create");
+Route::get('/article/store', "ArticleController@store");
 Route::get('/article/show', "ArticleController@show");
 Route::get('/article/onetomany', "ArticleController@onetomany");
 
-// Route::get('/profile/{username}', "ArticleController@profile");
-Route::get('/profile/{username}', function ($username) {
-    // echo 'username='.$username.'<br>';
-    $user = User::whereName($username)->first();
+Route::get('/user/{username}', function ($username) {
+    $user = User::whereName($username)->first()->toArray();
     dd($user);
 });
 
+Route::get('/user-all', function () {
+    $user = User::all()->toArray();
+    dd($user);
+});
+
+Route::get('/user-attach', "HomeController@attach");
+Route::get('/user-detach', "HomeController@detach");
+Route::get('/user-sync', "HomeController@sync");
+Route::get('/user-sync-wo-detach', "HomeController@sync");
+
 Route::get('/analytic', "AnalyticController@index");
 
-// Route::get('/analyticreport', "AnalyticReportController@index");
 Route::get('/analyticreport', "AnalyticReportController@show");
 
 Route::get('/customers', "CustomersController@index");
