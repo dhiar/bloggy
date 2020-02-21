@@ -66,27 +66,74 @@
     <body>
         <ul>
             <li>
-                <a href="/blog">CRUD - blog</a>
+                <a href="/home/store-user">Store User</a>
             </li>
             <li>
-                <a href="/customers/list">Scope</a>
+                <a href="/home/store-user-factory">Store User Factory</a>
+            </li>
+            <li>
+                <a href="/home/store-role">Store Role</a>
+            </li>
+            <li>
+                <a href="/home/store-country">Store Country</a>
+            </li>
+            <li>
+                <a href="/blog">Store Blog</a>
+            </li>
+            <li>
+                <a href="/customers/store">Store Customer</a>
+            </li>
+            <li>
+                <a href="/customers/list">Customer Scope</a>
             </li>
             <li>
                 <a href="/article/onetomany">One-to-Many - Article</a>
                 <ul>
                     <li>
-                        <a href="/article/create">Create Article</a>
+                        <a href="/article/store">Store Article</a>
                     </li>
                     <li>
                         <a href="/article/show">Show Article</a>
+                    </li>
+                    <li>
+                        <a href="/article/show-by-user/7">Show By User</a>
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="/home/pivot">Many-to-many (Pivot) - User_Role</a>
+                <ul>
+                    <li>
+                        <a href="/user/ana">User Ana</a>
+                    </li>
+                    <li>
+                        <a href="/user-all">User All</a>
+                    </li>
+                    <li>
+                        <a href="/user-attach">User Attach Role</a>
+                    </li>
+                    <li>
+                        <a href="/user-detach">User Detach Role</a>
+                    </li>
+                    <li>
+                        <a href="/user-sync">User Sync Role</a>
+                    </li>
+                    <li>
+                        <a href="/user-sync-wo-detach">User SyncWithOutDetaching Role</a>
+                    </li>
+                </ul>
             </li>
             <li>
-                <a href="/profil/Steven"> OneToOne - Steven</a>
+                <a href="/user-address"> One-To-One UserAddress</a>
+            </li>
+            <li>
+                <a href="/user-articles"> One-To-Many UserArticles</a>
+            </li>
+            <li>
+                <a href="/country"> One-To-ManyThrough CountryUserArticles</a>
+            </li>
+            <li>
+                <a href="/morph/user"> Morph User</a>
             </li>
         </ul>
         <div class="flex-center position-ref full-height">

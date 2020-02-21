@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -41,5 +42,23 @@ class User extends Authenticatable
     {
         // return $this->belongsToMany(Role::class)->withTimestamps();
         return $this->belongsToMany(Role::class)->withTimestamps()->withPivot(['name']);
+    }
+
+    public function articles(){
+        return $this->hasMany(Article::class);
+    }
+
+    public function address(){
+        return $this->hasOne(Address::class);
+    }
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+
+    public function comments()
+    {
+        // return $this->belongsTo(Comment::class);
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

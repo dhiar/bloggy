@@ -44,12 +44,6 @@ class BlogController extends Controller
         $blog =  Blog::find($id);
 
         // $users_where = DB::table('users')->where('username','like','%a%')->get();
-
-        // insert done
-        // DB::table('users')->insert([
-        //     ['username' => "andi", 'password'=> "abc"]
-        // ]);        
-
         // update done
         // DB::table('users')->where(['username'=>'andi'])->update(
         //         ['username' => "doni"]
