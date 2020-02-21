@@ -67,3 +67,5 @@ Route::get('/customers/store', "CustomersController@store");
 
 Route::get('/country', "CountryController@index");
 
+Route::get('/morph/user', "HomeController@morphUser");
+

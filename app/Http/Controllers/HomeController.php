@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 use App\Role;
 use App\User;
@@ -112,6 +113,8 @@ class HomeController extends Controller
     {
         $user = User::first();
         $user->roles()->attach(1,['name'=>'Test Name']);
+        $user->roles()->attach(2,['name'=>'Test Name']);
+        $user->roles()->attach(3,['name'=>'Test Name']);
 
         echo 'Username = '.$user->name.'<br><br>';
         foreach ($user->roles as $role) {
@@ -177,5 +180,29 @@ class HomeController extends Controller
         echo 'Username = '.$user->name;
         // dd($user->address->country);
         dd($user->articles->toArray());
+    }
+
+    public function morphUser()
+    {
+        $user = User::first();
+        echo '<h3>Users : </h3><h1>'.$user->name.'</h1>';
+        echo '<hr></hr>';
+        echo '<h3>From : <h1>'.$user->country->name.'</h1>';
+        echo '<hr></hr><br>';
+        echo '<h3>User Roles :</h3>';
+        dump($user->roles->toArray());
+        echo '<hr></hr>';
+        echo '<h3>User Comment :</h3>';
+        foreach ($user->comments as $key => $comment) {
+            dump($comment->body);
+        }
+
+        echo '<hr></hr>';
+        echo '<h3>User Article :</h3>';
+        $article = Article::find(12);
+        foreach ($article->comments as $key => $comment) {
+            dump($comment->body);
+        }
+        // dump($user->comments->toArray());
     }
 }

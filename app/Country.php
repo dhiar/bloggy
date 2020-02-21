@@ -14,4 +14,8 @@ class Country extends Model
     public function article(){
         return $this->hasManyThrough(Article::class, User::class, 'country_id');
     }
+
+    public function user(){
+        return $this->hasMany(User::class);
+    }
 }

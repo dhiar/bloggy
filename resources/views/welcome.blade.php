@@ -132,6 +132,9 @@
             <li>
                 <a href="/country"> One-To-ManyThrough CountryUserArticles</a>
             </li>
+            <li>
+                <a href="/morph/user"> Morph User</a>
+            </li>
         </ul>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))

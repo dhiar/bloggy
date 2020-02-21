@@ -51,4 +51,14 @@ class User extends Authenticatable
     public function address(){
         return $this->hasOne(Address::class);
     }
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+
+    public function comments()
+    {
+        // return $this->belongsTo(Comment::class);
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }
